@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.artemissoftware.amphitriteui2.islands.Island
 import com.artemissoftware.amphitriteui2.ui.theme.AmphitriteUI2Theme
 
 class MainActivity : ComponentActivity() {
@@ -30,7 +31,7 @@ class MainActivity : ComponentActivity() {
 
 
                     SingleContent {
-
+                        Island()
                     }
 
 

@@ -2,10 +2,7 @@ package com.artemissoftware.amphitriteui2.islands.composables
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -24,6 +21,11 @@ import com.artemissoftware.amphitriteui2.R
 @Composable
 fun DemoIsland1() {
     Text(
+        modifier = Modifier
+            .padding(
+                horizontal = 24.dp,
+                vertical = 12.dp
+            ),
         text = "I am the first island",
         fontWeight = FontWeight.Bold,
         fontSize = 24.sp
