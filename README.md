@@ -1,11 +1,11 @@
 # Amphitrite-UI-2
 App to explore jetpack compose 
 
-## Composables 
+## Island
     
-   Island - cluster o composables that mutate
+   cluster o composables that mutate
    
-#### Composables preview:
+#### Preview
 
 
 Stories #1            |  Stories #2            
