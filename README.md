@@ -2,9 +2,10 @@
 App to explore jetpack compose 
 
 ## Composables 
-    - Stories
+    
+   Island - cluster o composables that mutate
    
-### Composables preview:
+#### Composables preview:
 
 
 Stories #1            |  Stories #2            
