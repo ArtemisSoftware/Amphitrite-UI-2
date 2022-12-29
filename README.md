@@ -8,9 +8,30 @@ App to explore jetpack compose
 #### Preview
 
 
-Stories #1            |  Stories #2            
+Island #1            |  Island #2            
 :-------------------------:|:----------------------------:
 <img src="images/Stories_1.jpg">    |  <img src="images/Stories_2.jpg"> 
+
+
+## Credit card
+
+    A credit card tha flips
+
+#### Preview
+
+
+Credit card #1            |  Credit card #2
+:-------------------------:|:----------------------------:
+<img src="images/Stories_1.jpg">    |  <img src="images/Stories_2.jpg">
+
+
+
+
+
+
+
+
+
 
 
 
