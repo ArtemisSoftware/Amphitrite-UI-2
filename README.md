@@ -3,7 +3,7 @@ App to explore jetpack compose
 
 ## Island
     
-   cluster o composables that mutate
+   cluster of composables that mutate
    
 #### Preview
 
@@ -15,7 +15,7 @@ Island #1            |  Island #2
 
 ## Credit card
 
-    A credit card tha flips
+    A credit card that flips
 
 #### Preview
 

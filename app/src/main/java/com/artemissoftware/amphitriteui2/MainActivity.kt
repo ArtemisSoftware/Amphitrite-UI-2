@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.artemissoftware.amphitriteui2.creditcard.CreditCardScreen
 import com.artemissoftware.amphitriteui2.islands.Island
 import com.artemissoftware.amphitriteui2.ui.theme.AmphitriteUI2Theme
 
@@ -27,12 +28,12 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
 
+                    CreditCardScreen()
 
 
-
-                    SingleContent {
-                        Island()
-                    }
+//                    SingleContent {
+//                        Island()
+//                    }
 
 
 
