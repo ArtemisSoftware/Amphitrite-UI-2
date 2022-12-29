@@ -22,7 +22,7 @@ fun CreditCardFront(cardInfo: CreditCardInfo) {
 
     Card(
         modifier = Modifier
-            .height(200.dp),
+            .height(220.dp),
         shape = RoundedCornerShape(8.dp),
         elevation = 8.dp
     ) {
@@ -32,7 +32,10 @@ fun CreditCardFront(cardInfo: CreditCardInfo) {
             contentScale = ContentScale.FillBounds,
             modifier = Modifier.fillMaxSize()
         )
-        Box(modifier = Modifier.padding(16.dp)) {
+        Box(modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+        ) {
             Image(
                 painter = painterResource(id = cardInfo.providerDrawable),
                 contentDescription = "Visa",
@@ -40,18 +43,47 @@ fun CreditCardFront(cardInfo: CreditCardInfo) {
                     .width(86.dp)
                     .align(Alignment.TopStart)
             )
-            Column(modifier = Modifier.align(Alignment.BottomStart)) {
+
+            Text(
+                text = cardInfo.cardNumber,
+                fontFamily = SpaceMono,
+                letterSpacing = 1.2.sp,
+                fontSize = 25.sp,
+                modifier = Modifier
+                    .align(Alignment.Center)
+            )
+
+
+            Column(
+                modifier = Modifier
+                    .align(Alignment.BottomStart)
+            ) {
                 Text(
-                    text = cardInfo.cardNumber,
+                    text = "Card Holder",
                     fontFamily = SpaceMono,
                     letterSpacing = 1.2.sp,
-                    fontSize = 16.sp
+                    fontSize = 9.sp
                 )
                 Text(
                     text = cardInfo.cardHolder,
                     fontFamily = SpaceGrotesk,
                     letterSpacing = 1.1.sp,
                     fontSize = 16.sp
+                )
+            }
+
+            Column(modifier = Modifier.align(Alignment.BottomEnd)) {
+                Text(
+                    text = "VALID THRU",
+                    fontFamily = SpaceMono,
+                    letterSpacing = 1.2.sp,
+                    fontSize = 9.sp
+                )
+                Text(
+                    text = cardInfo.validity,
+                    fontFamily = SpaceGrotesk,
+                    letterSpacing = 1.1.sp,
+                    fontSize = 15.sp
                 )
             }
         }
@@ -62,7 +94,7 @@ fun CreditCardFront(cardInfo: CreditCardInfo) {
 
 @Composable
 @Preview(showBackground = true)
-fun CreditCardFrontPreview() {
+private fun CreditCardFrontPreview() {
     CreditCardFront(
         cardInfo = CreditCardInfo.mockCreditCards[0]
     )
