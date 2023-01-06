@@ -17,6 +17,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.artemissoftware.amphitriteui2.creditcard.CreditCardScreen
 import com.artemissoftware.amphitriteui2.islands.Island
+import com.artemissoftware.amphitriteui2.multiplescreens.MultipleSreensScreen
+import com.artemissoftware.amphitriteui2.multiplescreens.WindowSize
 
 @Composable
 fun SelectorScreen(navController: NavHostController) {
@@ -27,7 +29,7 @@ fun SelectorScreen(navController: NavHostController) {
     ) {
         item {
 
-            Exercise(
+            Demo(
                 title = "Islands",
                 navController,
                 Destinations.Islands
@@ -35,7 +37,7 @@ fun SelectorScreen(navController: NavHostController) {
         }
         item {
 
-            Exercise(
+            Demo(
                 title = "Credit cards\n(rotation animation)",
                 navController,
                 Destinations.CreditCards
@@ -43,7 +45,7 @@ fun SelectorScreen(navController: NavHostController) {
         }
         item {
 
-            Exercise(
+            Demo(
                 title = "Multiple sreens",
                 navController,
                 Destinations.MultipleSreens
@@ -65,7 +67,7 @@ sealed class Destinations(val route: String){
 }
 
 @Composable
-fun SetupNavGraph(navController: NavHostController) {
+fun SetupNavGraph(navController: NavHostController, window: WindowSize) {
     NavHost(
         navController = navController,
         startDestination = Destinations.Home.route
@@ -82,7 +84,7 @@ fun SetupNavGraph(navController: NavHostController) {
             CreditCardScreen()
         }
         composable(route = Destinations.MultipleSreens.route){
-            CreditCardScreen()
+            MultipleSreensScreen(window)
         }
 
     }
@@ -90,7 +92,7 @@ fun SetupNavGraph(navController: NavHostController) {
 
 
 @Composable
-fun Exercise(title: String, navController: NavHostController, destination: Destinations) {
+fun Demo(title: String, navController: NavHostController, destination: Destinations) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
