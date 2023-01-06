@@ -13,9 +13,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import androidx.paging.PagingData
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.artemissoftware.amphitriteui2.creditcard.CreditCardScreen
 import com.artemissoftware.amphitriteui2.islands.Island
 import com.artemissoftware.amphitriteui2.ui.theme.AmphitriteUI2Theme
+import kotlinx.coroutines.flow.MutableStateFlow
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,14 +32,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
 
-                    CreditCardScreen()
-
-
-//                    SingleContent {
-//                        Island()
-//                    }
-
-
+                    SetupNavGraph(navController = rememberNavController())
 
                 }
             }
@@ -43,17 +40,5 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun SingleContent(
-    content: @Composable() () -> Unit
-){
 
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        content()
-    }
 
-}
