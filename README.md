@@ -26,6 +26,11 @@ Credit card #1            |  Credit card #2
 
 
 
+## Multiple screens
+
+    Deal with different screen sizes
+
+
 
 
 
