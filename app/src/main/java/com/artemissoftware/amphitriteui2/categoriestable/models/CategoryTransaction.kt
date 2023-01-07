@@ -7,6 +7,8 @@ data class CategoryTransaction(
 
     companion object{
         val mock = CategoryTransaction(amount = "100", percentage = 30)
+
+        val mockList = listOf(CategoryTransaction(amount = "100", percentage = 30), CategoryTransaction(amount = "200", percentage = 70))
     }
 
 }
