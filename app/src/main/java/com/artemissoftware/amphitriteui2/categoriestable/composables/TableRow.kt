@@ -24,6 +24,6 @@ fun TableRow(
 
 @Composable
 @Preview(showBackground = true)
-private fun TableRow() {
+private fun TableRowPreview() {
     TableRow(items = CategoryTransaction.mockList)
 }

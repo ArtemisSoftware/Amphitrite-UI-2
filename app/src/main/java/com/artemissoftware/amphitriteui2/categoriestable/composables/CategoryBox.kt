@@ -34,6 +34,6 @@ fun CategoryBox(
 
 @Composable
 @Preview(showBackground = true)
-private fun MonthBoxPreview() {
+private fun CategoryBoxPreview() {
     CategoryBox(Category.mock)
 }

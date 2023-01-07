@@ -10,7 +10,7 @@ App to explore jetpack compose
 
 Island #1            |  Island #2            
 :-------------------------:|:----------------------------:
-<img src="images/Stories_1.jpg">    |  <img src="images/Stories_2.jpg"> 
+<img src="images/amphitrite_1.jpg">    |  <img src="images/amphitrite_2.jpg"> 
 
 
 ## Credit card
@@ -22,7 +22,7 @@ Island #1            |  Island #2
 
 Credit card #1            |  Credit card #2
 :-------------------------:|:----------------------------:
-<img src="images/Stories_1.jpg">    |  <img src="images/Stories_2.jpg">
+<img src="images/amphitrite_3.jpg">    |  <img src="images/amphitrite_4.jpg">
 
 
 
@@ -32,8 +32,14 @@ Credit card #1            |  Credit card #2
 
 
 
+## Categories table
+
+    A table that allows nested scrolling
 
 
+## Categories table #1            
+:-------------------------:
+<img src="images/amphitrite_5.jpg">   
 
 
 

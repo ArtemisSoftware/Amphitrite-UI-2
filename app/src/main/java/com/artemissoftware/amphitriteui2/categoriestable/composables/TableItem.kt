@@ -29,6 +29,6 @@ fun TableItem(
 
 @Composable
 @Preview(showBackground = true)
-private fun MonthBoxPreview() {
+private fun TableItemPreview() {
     TableItem(CategoryTransaction.mock)
 }

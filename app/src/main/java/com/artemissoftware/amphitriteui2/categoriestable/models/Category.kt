@@ -9,6 +9,8 @@ data class Category(
 
         val mock = Category(label = "My category", percentage = 10)
 
+        val mockList = listOf(Category(label = "My category", percentage = 10), Category(label = "My category 1", percentage = 40))
+
     }
 
 }

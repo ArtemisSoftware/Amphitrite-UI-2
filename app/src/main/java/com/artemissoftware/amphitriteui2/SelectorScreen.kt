@@ -15,6 +15,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.artemissoftware.amphitriteui2.categoriestable.TableCategoriesScreen
+import com.artemissoftware.amphitriteui2.categoriestable.models.Categories
 import com.artemissoftware.amphitriteui2.creditcard.CreditCardScreen
 import com.artemissoftware.amphitriteui2.islands.Island
 import com.artemissoftware.amphitriteui2.multiplescreens.MultipleSreensScreen
@@ -46,9 +48,17 @@ fun SelectorScreen(navController: NavHostController) {
         item {
 
             Demo(
-                title = "Multiple sreens",
+                title = "Multiple screens",
                 navController,
-                Destinations.MultipleSreens
+                Destinations.MultipleScreens
+            )
+        }
+        item {
+
+            Demo(
+                title = "Categories Table",
+                navController,
+                Destinations.CategoriesTable
             )
         }
     }
@@ -63,7 +73,8 @@ sealed class Destinations(val route: String){
     object Home: Destinations("home_screen")
     object Islands: Destinations("islands_screen")
     object CreditCards: Destinations("credit_cards_screen")
-    object MultipleSreens: Destinations("multiple_screens_screen")
+    object MultipleScreens: Destinations("multiple_screens_screen")
+    object CategoriesTable: Destinations("categories_table_screen")
 }
 
 @Composable
@@ -83,10 +94,12 @@ fun SetupNavGraph(navController: NavHostController, window: WindowSize) {
         composable(route = Destinations.CreditCards.route){
             CreditCardScreen()
         }
-        composable(route = Destinations.MultipleSreens.route){
+        composable(route = Destinations.MultipleScreens.route){
             MultipleSreensScreen(window)
         }
-
+        composable(route = Destinations.CategoriesTable.route){
+            TableCategoriesScreen(Categories.mock(30))
+        }
     }
 }
 
