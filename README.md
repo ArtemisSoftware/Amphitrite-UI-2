@@ -43,6 +43,14 @@ Credit card #1            |  Credit card #2
 
 
 
+## Circular slider
+
+    A circular slider
+
+
+## Circular slider #1
+:-------------------------:
+<img src="images/amphitrite_6.jpg">
 
 
 

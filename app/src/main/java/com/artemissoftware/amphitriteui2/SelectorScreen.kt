@@ -1,5 +1,6 @@
 package com.artemissoftware.amphitriteui2
 
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -17,6 +18,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.artemissoftware.amphitriteui2.categoriestable.TableCategoriesScreen
 import com.artemissoftware.amphitriteui2.categoriestable.models.Categories
+import com.artemissoftware.amphitriteui2.circularslider.CircularSlider
 import com.artemissoftware.amphitriteui2.creditcard.CreditCardScreen
 import com.artemissoftware.amphitriteui2.islands.Island
 import com.artemissoftware.amphitriteui2.multiplescreens.MultipleSreensScreen
@@ -61,6 +63,14 @@ fun SelectorScreen(navController: NavHostController) {
                 Destinations.CategoriesTable
             )
         }
+        item {
+
+            Demo(
+                title = "Circular slider",
+                navController,
+                Destinations.CircularSlider
+            )
+        }
     }
 
 
@@ -75,6 +85,7 @@ sealed class Destinations(val route: String){
     object CreditCards: Destinations("credit_cards_screen")
     object MultipleScreens: Destinations("multiple_screens_screen")
     object CategoriesTable: Destinations("categories_table_screen")
+    object CircularSlider: Destinations("circular_slider_screen")
 }
 
 @Composable
@@ -100,6 +111,15 @@ fun SetupNavGraph(navController: NavHostController, window: WindowSize) {
         composable(route = Destinations.CategoriesTable.route){
             TableCategoriesScreen(Categories.mock(30))
         }
+        composable(route = Destinations.CircularSlider.route){
+            SingleContent{
+                CircularSlider(
+                    modifier = Modifier.size(300.dp),
+                ){
+                    Log.d("progress",it.toString())
+                }
+            }
+        }
     }
 }
 
@@ -109,7 +129,7 @@ fun Demo(title: String, navController: NavHostController, destination: Destinati
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(14.dp)
+            .padding(top = 12.dp)
             .clickable {
                 navController.navigate(destination.route)
             },
