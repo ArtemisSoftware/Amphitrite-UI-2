@@ -23,6 +23,7 @@ import com.artemissoftware.amphitriteui2.creditcard.CreditCardScreen
 import com.artemissoftware.amphitriteui2.islands.Island
 import com.artemissoftware.amphitriteui2.multiplescreens.MultipleSreensScreen
 import com.artemissoftware.amphitriteui2.multiplescreens.WindowSize
+import com.artemissoftware.amphitriteui2.tabs.TabScreen
 
 @Composable
 fun SelectorScreen(navController: NavHostController) {
@@ -71,6 +72,14 @@ fun SelectorScreen(navController: NavHostController) {
                 Destinations.CircularSlider
             )
         }
+        item {
+
+            Demo(
+                title = "Tabs",
+                navController,
+                Destinations.Tabs
+            )
+        }
     }
 
 
@@ -86,6 +95,7 @@ sealed class Destinations(val route: String){
     object MultipleScreens: Destinations("multiple_screens_screen")
     object CategoriesTable: Destinations("categories_table_screen")
     object CircularSlider: Destinations("circular_slider_screen")
+    object Tabs: Destinations("tabs_screen")
 }
 
 @Composable
@@ -119,6 +129,9 @@ fun SetupNavGraph(navController: NavHostController, window: WindowSize) {
                     Log.d("progress",it.toString())
                 }
             }
+        }
+        composable(route = Destinations.Tabs.route){
+            TabScreen()
         }
     }
 }
