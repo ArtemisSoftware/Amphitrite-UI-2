@@ -7,10 +7,11 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.artemissoftware.amphitriteui2.tabs.models.TabPageInfo
 
 @Composable
 fun TabPage(
-    text: String,
+    info: TabPageInfo,
 ) {
     Box(
         modifier = Modifier
@@ -18,7 +19,7 @@ fun TabPage(
         contentAlignment = Alignment.Center,
     ) {
         Text(
-            text = text,
+            text = info.title,
             style = MaterialTheme.typography.body1,
         )
     }
