@@ -48,12 +48,22 @@ Credit card #1            |  Credit card #2
     A circular slider
 
 
-## Circular slider #1
+#### Circular slider #1
 :-------------------------:
 <img src="images/amphitrite_6.jpg">
 
 
 
+## Epoch
+
+    A charger animation
+
+
+#### Preview
+
+Epoch #1            |  Epoch #2
+:-------------------------:|:----------------------------:
+<img src="images/amphitrite_7.jpg">    |  <img src="images/amphitrite_8.jpg">
 
 
 
