@@ -54,6 +54,18 @@ Credit card #1            |  Credit card #2
 
 
 
+## Tabs
+
+    Page 1 - click animations
+
+
+#### Preview
+
+Tabs #1            |  Tabs #2
+:-------------------------:|:----------------------------:
+<img src="images/amphitrite_7.jpg">    |  <img src="images/amphitrite_8.jpg">
+
+
 ## Epoch
 
     A charger animation
