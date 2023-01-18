@@ -14,7 +14,7 @@ class ArcTransition(progress: State<Float>) {
 }
 
 @Composable
-fun UpdateCircularTransitionData(
+fun updateCircularTransitionData(
     remainingTime: Long,
     totalTime: Long
 ): ArcTransition {

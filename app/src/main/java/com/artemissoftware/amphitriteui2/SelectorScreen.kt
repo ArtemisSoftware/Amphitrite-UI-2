@@ -13,6 +13,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -20,6 +21,8 @@ import com.artemissoftware.amphitriteui2.categoriestable.TableCategoriesScreen
 import com.artemissoftware.amphitriteui2.categoriestable.models.Categories
 import com.artemissoftware.amphitriteui2.circularslider.CircularSlider
 import com.artemissoftware.amphitriteui2.creditcard.CreditCardScreen
+import com.artemissoftware.amphitriteui2.epoch.EpochScreen
+import com.artemissoftware.amphitriteui2.epoch.EpochViewModel
 import com.artemissoftware.amphitriteui2.islands.Island
 import com.artemissoftware.amphitriteui2.multiplescreens.MultipleSreensScreen
 import com.artemissoftware.amphitriteui2.multiplescreens.WindowSize
@@ -80,6 +83,14 @@ fun SelectorScreen(navController: NavHostController) {
                 Destinations.Tabs
             )
         }
+        item {
+
+            Demo(
+                title = "Epoch",
+                navController,
+                Destinations.Epoch
+            )
+        }
     }
 
 
@@ -96,6 +107,7 @@ sealed class Destinations(val route: String){
     object CategoriesTable: Destinations("categories_table_screen")
     object CircularSlider: Destinations("circular_slider_screen")
     object Tabs: Destinations("tabs_screen")
+    object Epoch: Destinations("epoch_screen")
 }
 
 @Composable
@@ -132,6 +144,10 @@ fun SetupNavGraph(navController: NavHostController, window: WindowSize) {
         }
         composable(route = Destinations.Tabs.route){
             TabScreen()
+        }
+        composable(route = Destinations.Epoch.route){
+            val viewModel: EpochViewModel = viewModel()
+            EpochScreen(viewModel)
         }
     }
 }

@@ -9,20 +9,20 @@ class EpochViewModel : ViewModel() {
 
     private var timer: CountDownTimer? = null
 
-    private val _currentTime = MutableStateFlow(totalTime)
+    private val _currentTime = MutableStateFlow(TOTAL_TIME)
     val currentTime: StateFlow<Long> = _currentTime
 
     private var _isRunning = MutableStateFlow(false)
     val isRunning: StateFlow<Boolean> = _isRunning
 
     private fun startTimer() {
-        timer = object : CountDownTimer(totalTime, interval) {
+        timer = object : CountDownTimer(TOTAL_TIME, interval) {
             override fun onTick(millisUntilFinished: Long) {
                 _currentTime.value = millisUntilFinished
             }
 
             override fun onFinish() {
-                _currentTime.value = totalTime
+                _currentTime.value = TOTAL_TIME
                 _isRunning.value = false
             }
         }
@@ -37,7 +37,7 @@ class EpochViewModel : ViewModel() {
     fun onResetClicked() {
         if (_isRunning.value) {
             timer?.cancel()
-            _currentTime.value = totalTime
+            _currentTime.value = TOTAL_TIME
             _isRunning.value = false
         }
     }
@@ -45,11 +45,11 @@ class EpochViewModel : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         timer?.cancel()
-        _currentTime.value = totalTime
+        _currentTime.value = TOTAL_TIME
     }
 
     companion object {
-        const val totalTime = 20 * 1000L
+        const val TOTAL_TIME = 20 * 1000L
         const val interval = 1000L
     }
 }

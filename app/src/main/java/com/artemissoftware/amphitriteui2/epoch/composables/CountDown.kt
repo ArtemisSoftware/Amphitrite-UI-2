@@ -22,11 +22,7 @@ import com.artemissoftware.amphitriteui2.epoch.util.Constants.getFormattedTime
 import com.artemissoftware.amphitriteui2.ui.theme.*
 
 @Composable
-fun CircularCountDown() {
-
-    var progress by remember { mutableStateOf(0f) }
-
-    val currentTime = 10L//viewModel.currentTime.collectAsState().value
+fun CircularCountDown(currentTime: Long, progress: Float) {
 
     Box(
         modifier = Modifier
@@ -92,5 +88,5 @@ private fun CountDownPreview() {
 @Preview(showBackground = true)
 @Composable
 private fun CircularCountDownPreview() {
-    CircularCountDown()
+    CircularCountDown(10L, 20F)
 }

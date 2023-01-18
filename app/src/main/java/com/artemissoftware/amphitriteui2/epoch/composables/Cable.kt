@@ -29,18 +29,11 @@ import com.artemissoftware.amphitriteui2.ui.theme.card
 import com.artemissoftware.amphitriteui2.ui.theme.deepGold
 import kotlin.math.roundToInt
 
-/**
- * CableView contains three Box layout which stacked up on each other view.
- * Box 1 is the root layout which acts as an draggable view.
- * Box 2 is cable with dynamic height. It means whenever we drag the root Box 1 layout height
- * of this layout be calculated calculated accordingly
- * Box 3 which contains flash icon inside. Color of this flash icon is handled according to the offset.
- * @param viewModel
- * @param isRunning
- */
+
 @Composable
 fun Cable(
-    //--viewModel: MainViewModel,
+    onStartClicked: () -> Unit,
+    onResetClicked: () -> Unit,
     isRunning: Boolean
 ) {
 
@@ -73,7 +66,6 @@ fun Cable(
         animationSpec = tween(300, easing = LinearEasing)
     )
 
-    // Box1 - Root Layout
     Box(
         modifier = Modifier
             .offset { IntOffset(0, offsetY.roundToInt()) }
@@ -88,13 +80,13 @@ fun Cable(
                     if (offsetY <= 1200) {
                         offsetY = 1200f
                         if (isRunningNow) {
-//                            viewModel.onResetClicked()
+                            onResetClicked()
                         } else {
-//                            viewModel.onStartClicked()
+                            onStartClicked()
                         }
                     } else {
                         offsetY = 1600f
-//                        viewModel.onResetClicked()
+                        onResetClicked()
                     }
                 }
             )
@@ -135,8 +127,8 @@ private fun CableHead(iconColor: State<Color>) {
 
     Box(
         modifier = Modifier
-            .requiredSize(100.dp)
-            .clip(RoundedCornerShape(4.dp))
+            .requiredSize(100.dp, 100.dp)
+            .clip(RoundedCornerShape(4.dp, 4.dp, 4.dp, 4.dp))
             .padding(0.dp, 20.dp, 0.dp, 0.dp)
             .background(card),
         contentAlignment = Alignment.Center
@@ -167,6 +159,8 @@ private fun CableHeadPreview() {
 @Composable
 private fun CablePreview() {
     Cable(
-        isRunning = true
+        isRunning = true,
+        onStartClicked = {},
+        onResetClicked = {},
     )
 }
