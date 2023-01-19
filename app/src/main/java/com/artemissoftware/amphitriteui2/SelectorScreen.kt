@@ -21,6 +21,7 @@ import com.artemissoftware.amphitriteui2.categoriestable.TableCategoriesScreen
 import com.artemissoftware.amphitriteui2.categoriestable.models.Categories
 import com.artemissoftware.amphitriteui2.circularslider.CircularSlider
 import com.artemissoftware.amphitriteui2.creditcard.CreditCardScreen
+import com.artemissoftware.amphitriteui2.draggable.DraggableBox
 import com.artemissoftware.amphitriteui2.epoch.EpochScreen
 import com.artemissoftware.amphitriteui2.epoch.EpochViewModel
 import com.artemissoftware.amphitriteui2.islands.Island
@@ -91,6 +92,14 @@ fun SelectorScreen(navController: NavHostController) {
                 Destinations.Epoch
             )
         }
+        item {
+
+            Demo(
+                title = "DraggableBox",
+                navController,
+                Destinations.DraggableBox
+            )
+        }
     }
 
 
@@ -108,6 +117,7 @@ sealed class Destinations(val route: String){
     object CircularSlider: Destinations("circular_slider_screen")
     object Tabs: Destinations("tabs_screen")
     object Epoch: Destinations("epoch_screen")
+    object DraggableBox: Destinations("draggable_box_screen")
 }
 
 @Composable
@@ -148,6 +158,12 @@ fun SetupNavGraph(navController: NavHostController, window: WindowSize) {
         composable(route = Destinations.Epoch.route){
             val viewModel: EpochViewModel = viewModel()
             EpochScreen(viewModel)
+        }
+        composable(route = Destinations.DraggableBox.route){
+            SingleContent{
+                DraggableBox("1")
+                DraggableBox("2")
+            }
         }
     }
 }
