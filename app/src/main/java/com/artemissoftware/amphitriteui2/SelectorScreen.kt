@@ -1,12 +1,13 @@
 package com.artemissoftware.amphitriteui2
 
 import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -28,6 +29,7 @@ import com.artemissoftware.amphitriteui2.islands.Island
 import com.artemissoftware.amphitriteui2.multiplescreens.MultipleSreensScreen
 import com.artemissoftware.amphitriteui2.multiplescreens.WindowSize
 import com.artemissoftware.amphitriteui2.tabs.TabScreen
+import com.artemissoftware.amphitriteui2.verticalslider.VerticalSlider
 
 @Composable
 fun SelectorScreen(navController: NavHostController) {
@@ -100,6 +102,14 @@ fun SelectorScreen(navController: NavHostController) {
                 Destinations.DraggableBox
             )
         }
+        item {
+
+            Demo(
+                title = "Vertical Slider",
+                navController,
+                Destinations.VerticalSlider
+            )
+        }
     }
 
 
@@ -118,6 +128,7 @@ sealed class Destinations(val route: String){
     object Tabs: Destinations("tabs_screen")
     object Epoch: Destinations("epoch_screen")
     object DraggableBox: Destinations("draggable_box_screen")
+    object VerticalSlider: Destinations("vertical_slider_screen")
 }
 
 @Composable
@@ -163,6 +174,21 @@ fun SetupNavGraph(navController: NavHostController, window: WindowSize) {
             SingleContent{
                 DraggableBox("1")
                 DraggableBox("2")
+            }
+        }
+        composable(route = Destinations.VerticalSlider.route){
+            SingleContent{
+                var value by remember { mutableStateOf(0f) }
+                VerticalSlider(
+                    value = value,
+                    onValueChange = {
+                        value = it
+                    },
+                    modifier = Modifier
+                        .width(200.dp)
+                        .height(50.dp)
+                        .background(Color(0xffdedede))
+                )
             }
         }
     }

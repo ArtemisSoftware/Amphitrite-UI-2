@@ -79,6 +79,28 @@ Epoch #1            |  Epoch #2
 
 
 
+## Draggable box
+
+    A draggable box
+
+
+#### Draggable box #1
+:-------------------------:
+<img src="images/amphitrite_9.jpg">
+
+
+## Vertical slider
+
+    A vertical slider
+
+
+#### Vertical slider #1
+:-------------------------:
+<img src="images/amphitrite_10.jpg">
+
+
+
+
 
 Recipes #1            |  Recipes #2            
 :-------------------------:|:----------------------------:
