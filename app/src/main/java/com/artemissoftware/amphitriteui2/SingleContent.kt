@@ -9,15 +9,13 @@ import androidx.compose.ui.Modifier
 
 @Composable
 fun SingleContent(
-    content: @Composable() () -> Unit
-){
-
+    content: @Composable() () -> Unit,
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
     ) {
         content()
     }
-
 }

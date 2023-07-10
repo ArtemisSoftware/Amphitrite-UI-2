@@ -33,151 +33,136 @@ import com.artemissoftware.amphitriteui2.verticalslider.VerticalSlider
 
 @Composable
 fun SelectorScreen(navController: NavHostController) {
-
     LazyColumn(
         modifier = Modifier.fillMaxHeight(),
-        //verticalArrangement = Arrangement.spacedBy(24.dp)
+        // verticalArrangement = Arrangement.spacedBy(24.dp)
     ) {
         item {
-
             Demo(
                 title = "Islands",
                 navController,
-                Destinations.Islands
+                Destinations.Islands,
             )
         }
         item {
-
             Demo(
                 title = "Credit cards\n(rotation animation)",
                 navController,
-                Destinations.CreditCards
+                Destinations.CreditCards,
             )
         }
         item {
-
             Demo(
                 title = "Multiple screens",
                 navController,
-                Destinations.MultipleScreens
+                Destinations.MultipleScreens,
             )
         }
         item {
-
             Demo(
                 title = "Categories Table",
                 navController,
-                Destinations.CategoriesTable
+                Destinations.CategoriesTable,
             )
         }
         item {
-
             Demo(
                 title = "Circular slider",
                 navController,
-                Destinations.CircularSlider
+                Destinations.CircularSlider,
             )
         }
         item {
-
             Demo(
                 title = "Tabs",
                 navController,
-                Destinations.Tabs
+                Destinations.Tabs,
             )
         }
         item {
-
             Demo(
                 title = "Epoch",
                 navController,
-                Destinations.Epoch
+                Destinations.Epoch,
             )
         }
         item {
-
             Demo(
                 title = "DraggableBox",
                 navController,
-                Destinations.DraggableBox
+                Destinations.DraggableBox,
             )
         }
         item {
-
             Demo(
                 title = "Vertical Slider",
                 navController,
-                Destinations.VerticalSlider
+                Destinations.VerticalSlider,
             )
         }
     }
-
-
-
 }
 
-
-
-sealed class Destinations(val route: String){
-    object Home: Destinations("home_screen")
-    object Islands: Destinations("islands_screen")
-    object CreditCards: Destinations("credit_cards_screen")
-    object MultipleScreens: Destinations("multiple_screens_screen")
-    object CategoriesTable: Destinations("categories_table_screen")
-    object CircularSlider: Destinations("circular_slider_screen")
-    object Tabs: Destinations("tabs_screen")
-    object Epoch: Destinations("epoch_screen")
-    object DraggableBox: Destinations("draggable_box_screen")
-    object VerticalSlider: Destinations("vertical_slider_screen")
+sealed class Destinations(val route: String) {
+    object Home : Destinations("home_screen")
+    object Islands : Destinations("islands_screen")
+    object CreditCards : Destinations("credit_cards_screen")
+    object MultipleScreens : Destinations("multiple_screens_screen")
+    object CategoriesTable : Destinations("categories_table_screen")
+    object CircularSlider : Destinations("circular_slider_screen")
+    object Tabs : Destinations("tabs_screen")
+    object Epoch : Destinations("epoch_screen")
+    object DraggableBox : Destinations("draggable_box_screen")
+    object VerticalSlider : Destinations("vertical_slider_screen")
 }
 
 @Composable
 fun SetupNavGraph(navController: NavHostController, window: WindowSize) {
     NavHost(
         navController = navController,
-        startDestination = Destinations.Home.route
+        startDestination = Destinations.Home.route,
     ) {
-        composable(route = Destinations.Home.route){
+        composable(route = Destinations.Home.route) {
             SelectorScreen(navController)
         }
-        composable(route = Destinations.Islands.route){
-            SingleContent{
+        composable(route = Destinations.Islands.route) {
+            SingleContent {
                 Island()
             }
         }
-        composable(route = Destinations.CreditCards.route){
+        composable(route = Destinations.CreditCards.route) {
             CreditCardScreen()
         }
-        composable(route = Destinations.MultipleScreens.route){
+        composable(route = Destinations.MultipleScreens.route) {
             MultipleSreensScreen(window)
         }
-        composable(route = Destinations.CategoriesTable.route){
+        composable(route = Destinations.CategoriesTable.route) {
             TableCategoriesScreen(Categories.mock(30))
         }
-        composable(route = Destinations.CircularSlider.route){
-            SingleContent{
+        composable(route = Destinations.CircularSlider.route) {
+            SingleContent {
                 CircularSlider(
                     modifier = Modifier.size(300.dp),
-                ){
-                    Log.d("progress",it.toString())
+                ) {
+                    Log.d("progress", it.toString())
                 }
             }
         }
-        composable(route = Destinations.Tabs.route){
+        composable(route = Destinations.Tabs.route) {
             TabScreen()
         }
-        composable(route = Destinations.Epoch.route){
+        composable(route = Destinations.Epoch.route) {
             val viewModel: EpochViewModel = viewModel()
             EpochScreen(viewModel)
         }
-        composable(route = Destinations.DraggableBox.route){
-            SingleContent{
+        composable(route = Destinations.DraggableBox.route) {
+            SingleContent {
                 DraggableBox("1")
                 DraggableBox("2")
             }
         }
-        composable(route = Destinations.VerticalSlider.route){
-            SingleContent{
+        composable(route = Destinations.VerticalSlider.route) {
+            SingleContent {
                 var value by remember { mutableStateOf(0f) }
                 VerticalSlider(
                     value = value,
@@ -187,13 +172,12 @@ fun SetupNavGraph(navController: NavHostController, window: WindowSize) {
                     modifier = Modifier
                         .width(200.dp)
                         .height(50.dp)
-                        .background(Color(0xffdedede))
+                        .background(Color(0xffdedede)),
                 )
             }
         }
     }
 }
-
 
 @Composable
 fun Demo(title: String, navController: NavHostController, destination: Destinations) {
@@ -204,18 +188,17 @@ fun Demo(title: String, navController: NavHostController, destination: Destinati
             .clickable {
                 navController.navigate(destination.route)
             },
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
     ) {
         Text(
             text = title,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,
             fontSize = 24.sp,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
 
         )
 
         Divider(startIndent = 16.dp, thickness = 1.dp, color = Color.LightGray, modifier = Modifier.padding(top = 12.dp))
     }
-
 }

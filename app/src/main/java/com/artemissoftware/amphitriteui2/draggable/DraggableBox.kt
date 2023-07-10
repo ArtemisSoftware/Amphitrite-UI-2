@@ -19,9 +19,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun DraggableBox(text: String) {
-
-    Box(
-    ){
+    Box() {
         val d = LocalDensity.current
         var offsetX by remember { mutableStateOf(0f) }
         var offsetY by remember { mutableStateOf(0f) }
@@ -37,18 +35,17 @@ fun DraggableBox(text: String) {
                         offsetX += dragAmount.x
                         offsetY += dragAmount.y
                     }
-                }
-        ){
+                },
+        ) {
             Text(
                 modifier = Modifier.align(Alignment.Center),
                 color = Color.White,
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
-                text = text
+                text = text,
             )
         }
     }
-
 }
 
 @Preview(showBackground = true)
