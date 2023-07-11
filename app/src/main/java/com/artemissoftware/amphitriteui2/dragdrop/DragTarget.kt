@@ -11,6 +11,9 @@ import androidx.compose.ui.layout.onGloballyPositioned
 
 internal val LocalDragTargetInfo = compositionLocalOf { DragTargetInfo() }
 
+/**
+ * All composables wraped with this are draggable
+ */
 @Composable
 fun <T> DragTarget(
     modifier: Modifier = Modifier,
