@@ -19,7 +19,8 @@ internal val LocalDragTargetInfo = compositionLocalOf { DragTargetInfo() }
 fun <T> DragTarget(
     modifier: Modifier = Modifier,
     dataToDrop: T,
-//    viewModel: MainViewModel,
+    onStartDragging: () -> Unit,
+    onStopDragging: () -> Unit,
     content: @Composable (() -> Unit),
 ) {
     var currentPosition by remember { mutableStateOf(Offset.Zero) }
@@ -34,7 +35,7 @@ fun <T> DragTarget(
             }
             .pointerInput(Unit) {
                 detectDragGesturesAfterLongPress(onDragStart = {
-//                viewModel.startDragging()
+                    onStartDragging()
                     currentState.dataToDrop = dataToDrop
                     currentState.isDragging = true
                     currentState.dragPosition = currentPosition + it
@@ -43,11 +44,11 @@ fun <T> DragTarget(
                     change.consumeAllChanges()
                     currentState.dragOffset += Offset(dragAmount.x, dragAmount.y)
                 }, onDragEnd = {
-//                viewModel.stopDragging()
+                    onStopDragging()
                     currentState.isDragging = false
                     currentState.dragOffset = Offset.Zero
                 }, onDragCancel = {
-//                viewModel.stopDragging()
+                    onStopDragging()
                     currentState.dragOffset = Offset.Zero
                     currentState.isDragging = false
                 })

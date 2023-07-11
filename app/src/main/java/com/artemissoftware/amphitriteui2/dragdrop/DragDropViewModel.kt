@@ -21,22 +21,21 @@ class DragDropViewModel : ViewModel() {
 
     init {
         items = listOf(
-            Person("Michael","1", Color.Gray),
-            Person("Larissa","2", Color.Blue),
-            Person("Marc","3", Color.Green),
+            Person("Michael", "1", Color.Gray),
+            Person("Larissa", "2", Color.Blue),
+            Person("Marc", "3", Color.Green),
         )
     }
 
-    fun startDragging(){
+    fun startDragging() {
         isCurrentlyDragging = true
     }
-    fun stopDragging(){
+    fun stopDragging() {
         isCurrentlyDragging = false
     }
 
-    fun addPerson(personUiItem: Person){
+    fun addPerson(personUiItem: Person) {
         println("Added Person")
         addedPersons.add(personUiItem)
     }
-
 }
