@@ -22,6 +22,8 @@ import com.artemissoftware.amphitriteui2.categoriestable.TableCategoriesScreen
 import com.artemissoftware.amphitriteui2.categoriestable.models.Categories
 import com.artemissoftware.amphitriteui2.circularslider.CircularSlider
 import com.artemissoftware.amphitriteui2.creditcard.CreditCardScreen
+import com.artemissoftware.amphitriteui2.dragdrop.DragDropScreen
+import com.artemissoftware.amphitriteui2.dragdrop.DragDropViewModel
 import com.artemissoftware.amphitriteui2.draggable.DraggableBox
 import com.artemissoftware.amphitriteui2.epoch.EpochScreen
 import com.artemissoftware.amphitriteui2.epoch.EpochViewModel
@@ -100,6 +102,13 @@ fun SelectorScreen(navController: NavHostController) {
                 Destinations.VerticalSlider,
             )
         }
+        item {
+            Demo(
+                title = "Drag and Drop",
+                navController,
+                Destinations.DragDrop,
+            )
+        }
     }
 }
 
@@ -114,10 +123,16 @@ sealed class Destinations(val route: String) {
     object Epoch : Destinations("epoch_screen")
     object DraggableBox : Destinations("draggable_box_screen")
     object VerticalSlider : Destinations("vertical_slider_screen")
+
+    object DragDrop : Destinations("drag_drop_screen")
 }
 
 @Composable
-fun SetupNavGraph(navController: NavHostController, window: WindowSize) {
+fun SetupNavGraph(
+    navController: NavHostController,
+    window: WindowSize,
+    dragDropViewModel: DragDropViewModel,
+) {
     NavHost(
         navController = navController,
         startDestination = Destinations.Home.route,
@@ -176,13 +191,21 @@ fun SetupNavGraph(navController: NavHostController, window: WindowSize) {
                 )
             }
         }
+        composable(route = Destinations.DragDrop.route) {
+            DragDropScreen(dragDropViewModel)
+        }
     }
 }
 
 @Composable
-fun Demo(title: String, navController: NavHostController, destination: Destinations) {
+fun Demo(
+    title: String,
+    navController: NavHostController,
+    destination: Destinations,
+    modifier: Modifier = Modifier,
+) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(top = 12.dp)
             .clickable {

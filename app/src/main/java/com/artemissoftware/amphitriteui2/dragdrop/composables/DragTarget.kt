@@ -8,6 +8,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.input.pointer.consumeAllChanges
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onGloballyPositioned
+import com.artemissoftware.amphitriteui2.dragdrop.DragDropViewModel
 import com.artemissoftware.amphitriteui2.dragdrop.models.DragTargetInfo
 
 internal val LocalDragTargetInfo = compositionLocalOf { DragTargetInfo() }
