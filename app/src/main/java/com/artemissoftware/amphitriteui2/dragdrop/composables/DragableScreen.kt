@@ -1,4 +1,4 @@
-package com.artemissoftware.amphitriteui2.dragdrop
+package com.artemissoftware.amphitriteui2.dragdrop.composables
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.unit.IntSize
+import com.artemissoftware.amphitriteui2.dragdrop.models.DragTargetInfo
 
 @Composable
 fun DragableScreen(

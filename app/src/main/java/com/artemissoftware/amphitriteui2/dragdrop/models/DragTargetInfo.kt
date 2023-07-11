@@ -1,4 +1,4 @@
-package com.artemissoftware.amphitriteui2.dragdrop
+package com.artemissoftware.amphitriteui2.dragdrop.models
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue

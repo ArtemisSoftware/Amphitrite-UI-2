@@ -1,4 +1,4 @@
-package com.artemissoftware.amphitriteui2.dragdrop
+package com.artemissoftware.amphitriteui2.dragdrop.composables
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
