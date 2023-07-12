@@ -18,6 +18,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.artemissoftware.amphitriteui2.animations.glow.Glow
 import com.artemissoftware.amphitriteui2.categoriestable.TableCategoriesScreen
 import com.artemissoftware.amphitriteui2.categoriestable.models.Categories
 import com.artemissoftware.amphitriteui2.circularslider.CircularSlider
@@ -109,6 +110,13 @@ fun SelectorScreen(navController: NavHostController) {
                 Destinations.DragDrop,
             )
         }
+        item {
+            Demo(
+                title = "Glow",
+                navController,
+                Destinations.Glow,
+            )
+        }
     }
 }
 
@@ -125,6 +133,8 @@ sealed class Destinations(val route: String) {
     object VerticalSlider : Destinations("vertical_slider_screen")
 
     object DragDrop : Destinations("drag_drop_screen")
+
+    object Glow : Destinations("glow_screen")
 }
 
 @Composable
@@ -193,6 +203,11 @@ fun SetupNavGraph(
         }
         composable(route = Destinations.DragDrop.route) {
             DragDropScreen(dragDropViewModel)
+        }
+        composable(route = Destinations.Glow.route) {
+            SingleContent {
+                Glow()
+            }
         }
     }
 }
