@@ -19,6 +19,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.artemissoftware.amphitriteui2.animations.glow.Glow
+import com.artemissoftware.amphitriteui2.animations.imagetransition.ImageTransitionScreen
 import com.artemissoftware.amphitriteui2.categoriestable.TableCategoriesScreen
 import com.artemissoftware.amphitriteui2.categoriestable.models.Categories
 import com.artemissoftware.amphitriteui2.circularslider.CircularSlider
@@ -117,6 +118,13 @@ fun SelectorScreen(navController: NavHostController) {
                 Destinations.Glow,
             )
         }
+        item {
+            Demo(
+                title = "Image Transition with Animation",
+                navController,
+                Destinations.ImageTransition,
+            )
+        }
     }
 }
 
@@ -135,6 +143,7 @@ sealed class Destinations(val route: String) {
     object DragDrop : Destinations("drag_drop_screen")
 
     object Glow : Destinations("glow_screen")
+    object ImageTransition : Destinations("image_transition_screen")
 }
 
 @Composable
@@ -208,6 +217,9 @@ fun SetupNavGraph(
             SingleContent {
                 Glow()
             }
+        }
+        composable(route = Destinations.ImageTransition.route) {
+            ImageTransitionScreen()
         }
     }
 }
