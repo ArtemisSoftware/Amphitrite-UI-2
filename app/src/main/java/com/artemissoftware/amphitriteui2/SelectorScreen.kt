@@ -125,6 +125,13 @@ fun SelectorScreen(navController: NavHostController) {
                 Destinations.ImageTransition,
             )
         }
+        item {
+            Demo(
+                title = "Shared Element Transition Animation",
+                navController,
+                Destinations.SharedElementTransitionAnimation,
+            )
+        }
     }
 }
 
@@ -144,6 +151,8 @@ sealed class Destinations(val route: String) {
 
     object Glow : Destinations("glow_screen")
     object ImageTransition : Destinations("image_transition_screen")
+
+    object SharedElementTransitionAnimation : Destinations("shared_element_transition_animation")
 }
 
 @Composable
@@ -220,6 +229,9 @@ fun SetupNavGraph(
         }
         composable(route = Destinations.ImageTransition.route) {
             ImageTransitionScreen()
+        }
+        composable(route = Destinations.SharedElementTransitionAnimation.route) {
+
         }
     }
 }
