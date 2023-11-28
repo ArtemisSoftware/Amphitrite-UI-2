@@ -21,10 +21,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.artemissoftware.amphitriteui2.R
 import com.artemissoftware.amphitriteui2.animations.sharedelementtransition.models.Mountain
 import com.skydoves.orbital.Orbital
 import com.skydoves.orbital.animateSharedElementTransition
@@ -57,6 +59,7 @@ fun MountainScreen() {
                 .data(mountain.image)
                 .crossfade(true)
                 .build(),
+            placeholder = painterResource(R.drawable.aquarius),
             contentDescription = "Mountain Image",
             contentScale = ContentScale.Crop,
         )

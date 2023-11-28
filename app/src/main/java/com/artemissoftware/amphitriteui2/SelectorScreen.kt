@@ -20,6 +20,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.artemissoftware.amphitriteui2.animations.glow.Glow
 import com.artemissoftware.amphitriteui2.animations.imagetransition.ImageTransitionScreen
+import com.artemissoftware.amphitriteui2.animations.sharedelementtransition.MountainScreen
 import com.artemissoftware.amphitriteui2.categoriestable.TableCategoriesScreen
 import com.artemissoftware.amphitriteui2.categoriestable.models.Categories
 import com.artemissoftware.amphitriteui2.circularslider.CircularSlider
@@ -231,7 +232,7 @@ fun SetupNavGraph(
             ImageTransitionScreen()
         }
         composable(route = Destinations.SharedElementTransitionAnimation.route) {
-
+            MountainScreen()
         }
     }
 }
