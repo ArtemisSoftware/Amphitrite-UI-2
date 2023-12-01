@@ -1,11 +1,11 @@
 package com.artemissoftware.amphitriteui2.categoriestable
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Scaffold
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -15,11 +15,11 @@ import com.artemissoftware.amphitriteui2.categoriestable.composables.MonthBox
 import com.artemissoftware.amphitriteui2.categoriestable.composables.TableRow
 import com.artemissoftware.amphitriteui2.categoriestable.models.Categories
 
-
+@SuppressLint("UnusedBoxWithConstraintsScope")
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun TableCategoriesScreen(
-    categories : Categories
+    categories: Categories,
 ) {
     val leftColumnWidth = 120.dp
     val rowWidth = 64.dp
@@ -32,21 +32,19 @@ fun TableCategoriesScreen(
         BoxWithConstraints(
             modifier = Modifier
                 .padding(innerPadding)
-                .consumedWindowInsets(innerPadding)
+                .consumeWindowInsets(innerPadding),
         ) {
-
-
             Column {
                 // Months
                 Row {
                     Box(modifier = Modifier.width(leftColumnWidth))
                     Row(
-                        modifier = Modifier.horizontalScroll(horizontalScroll)
+                        modifier = Modifier.horizontalScroll(horizontalScroll),
                     ) {
                         categories.months.forEach { month ->
                             MonthBox(
                                 month = month,
-                                modifier = Modifier.width(64.dp)
+                                modifier = Modifier.width(64.dp),
                             )
                         }
                     }
@@ -57,12 +55,12 @@ fun TableCategoriesScreen(
                     Column(
                         modifier = Modifier
                             .width(leftColumnWidth)
-                            .verticalScroll(verticalScroll)
+                            .verticalScroll(verticalScroll),
                     ) {
                         categories.categories.forEach { category ->
                             CategoryBox(
                                 item = category,
-                                modifier = Modifier.height(rowHeight)
+                                modifier = Modifier.height(rowHeight),
                             )
                         }
                     }
@@ -71,14 +69,14 @@ fun TableCategoriesScreen(
                     Column(
                         modifier = Modifier
                             .verticalScroll(verticalScroll)
-                            .horizontalScroll(horizontalScroll)
+                            .horizontalScroll(horizontalScroll),
                     ) {
                         categories.categoriesByMonth.forEach {
                             TableRow(
                                 items = it.items,
                                 itemModifier = Modifier
                                     .width(rowWidth)
-                                    .height(rowHeight)
+                                    .height(rowHeight),
                             )
                         }
                     }
@@ -86,14 +84,12 @@ fun TableCategoriesScreen(
             }
         }
     }
-
-
 }
 
 @Composable
 @Preview(showBackground = true)
 private fun TableCategoriesScreenPreview() {
     TableCategoriesScreen(
-        categories = Categories.mock(30)
+        categories = Categories.mock(30),
     )
 }

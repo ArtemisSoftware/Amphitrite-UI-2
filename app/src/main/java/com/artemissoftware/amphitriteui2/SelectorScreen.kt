@@ -18,6 +18,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.artemissoftware.amphitriteui2.animations.animatedcontent.AnimatedContentScreen
 import com.artemissoftware.amphitriteui2.animations.glow.Glow
 import com.artemissoftware.amphitriteui2.animations.imagetransition.ImageTransitionScreen
 import com.artemissoftware.amphitriteui2.animations.sharedelementtransition.MountainListScreen
@@ -141,6 +142,13 @@ fun SelectorScreen(navController: NavHostController) {
                 Destinations.SharedElementTransitionWithListAnimation,
             )
         }
+        item {
+            Demo(
+                title = "Animated content",
+                navController,
+                Destinations.AnimatedContent,
+            )
+        }
     }
 }
 
@@ -164,6 +172,8 @@ sealed class Destinations(val route: String) {
     object SharedElementTransitionAnimation : Destinations("shared_element_transition_animation")
 
     object SharedElementTransitionWithListAnimation : Destinations("shared_element_transition_list_animation")
+
+    data object AnimatedContent : Destinations("animated_content")
 }
 
 @Composable
@@ -246,6 +256,9 @@ fun SetupNavGraph(
         }
         composable(route = Destinations.SharedElementTransitionWithListAnimation.route) {
             MountainListScreen()
+        }
+        composable(route = Destinations.AnimatedContent.route) {
+            AnimatedContentScreen()
         }
     }
 }
