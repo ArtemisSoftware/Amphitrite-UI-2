@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -31,12 +32,17 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.artemissoftware.amphitriteui2.animations.sharedelementtransition.models.Mountain
 import com.skydoves.orbital.Orbital
 import com.skydoves.orbital.animateBounds
+import com.skydoves.orbital.rememberMovableContentOf
 
 @Composable
 fun MountainListScreen() {
@@ -56,39 +62,67 @@ fun MountainListScreen() {
                 }
 
                 AnimatedVisibility(
-                    visibleState = remember { MutableTransitionState(false) }.apply { targetState = true },
+                    visibleState = remember {
+                        MutableTransitionState(false)
+                    }.apply { targetState = true },
                     enter = fadeIn(tween(durationMillis = 300)),
                     exit = fadeOut(tween(durationMillis = 300)),
                 ) {
                     Orbital(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clickableWithoutRipple(interactionsSource = MutableInteractionSource(), onClick = { expanded = !expanded }),
+                            .clickableWithoutRipple(
+                                interactionsSource = MutableInteractionSource(),
+                                onClick = { expanded = !expanded },
+                            ),
                     ) {
-                        Column(
-                            modifier = Modifier
-                                .padding(vertical = 12.dp)
-                                .padding(horizontal = if (expanded) 20.dp else 10.dp)
-                                .animateBounds(
-                                    sizeAnimationSpec = tween(durationMillis = 300),
-                                    positionAnimationSpec = tween(durationMillis = 300),
-                                ),
-                        ) {
-                            Text(
-                                text = mountain.title,
-                                color = MaterialTheme.colorScheme.onSurface,
-                                fontSize = MaterialTheme.typography.titleLarge.fontSize,
-                                fontWeight = FontWeight.Medium,
-                                maxLines = if (expanded) 2 else 1,
-                                overflow = TextOverflow.Ellipsis,
-                            )
-                            Spacer(modifier = Modifier.height(8.dp))
+                        val text = rememberMovableContentOf {
+                            Column(
+                                modifier = Modifier
+                                    .padding(vertical = 12.dp)
+                                    .padding(horizontal = if (expanded) 20.dp else 10.dp)
+                                    .animateBounds(
+                                        sizeAnimationSpec = tween(durationMillis = 300),
+                                        positionAnimationSpec = tween(durationMillis = 300),
+                                    ),
+                            ) {
+                                Text(
+                                    text = mountain.title,
+                                    color = MaterialTheme.colorScheme.onSurface,
+                                    fontSize = MaterialTheme.typography.titleLarge.fontSize,
+                                    fontWeight = FontWeight.Medium,
+                                    maxLines = if (expanded) 2 else 1,
+                                    overflow = TextOverflow.Ellipsis,
+                                )
+                                Spacer(modifier = Modifier.height(8.dp))
 
-                            Text(
-                                text = mountain.description,
-                                color = MaterialTheme.colorScheme.onSurface,
-                                maxLines = if (expanded) 10 else 2,
-                                overflow = TextOverflow.Clip,
+                                Text(
+                                    text = mountain.description,
+                                    color = MaterialTheme.colorScheme.onSurface,
+                                    maxLines = if (expanded) 10 else 2,
+                                    overflow = TextOverflow.Clip,
+                                )
+                            }
+                        }
+
+                        val image = rememberMovableContentOf {
+                            AsyncImage(
+                                modifier = Modifier
+                                    .padding(10.dp)
+                                    .animateBounds(
+                                        modifier = if (expanded) {
+                                            Modifier.fillMaxWidth()
+                                        } else {
+                                            Modifier.size(100.dp)
+                                        },
+                                    )
+                                    .clip(RoundedCornerShape(10.dp)),
+                                model = ImageRequest.Builder(LocalContext.current)
+                                    .data(mountain.image)
+                                    .crossfade(true)
+                                    .build(),
+                                contentDescription = "Mountain Image",
+                                contentScale = ContentScale.Crop,
                             )
                         }
 
@@ -118,14 +152,14 @@ fun MountainListScreen() {
 fun Modifier.clickableWithoutRipple(
     interactionsSource: MutableInteractionSource,
     onClick: () -> Unit,
-) = composed (
+) = composed(
     factory = {
         this.then(
             Modifier.clickable(
                 interactionSource = interactionsSource,
                 indication = null,
-                onClick = { onClick }
-            )
+                onClick = { onClick() },
+            ),
         )
-    }
+    },
 )
