@@ -27,16 +27,16 @@ fun BoxScope.bottleText(
         withStyle(
             style = SpanStyle(
                 color = if (waterPercentage > 0.5f) bottleColor else waterWavesColor,
-                fontSize = 44.sp
-            )
+                fontSize = 44.sp,
+            ),
         ) {
             append(description)
         }
         withStyle(
             style = SpanStyle(
                 color = if (waterPercentage > 0.5f) bottleColor else waterWavesColor,
-                fontSize = 22.sp
-            )
+                fontSize = 22.sp,
+            ),
         ) {
             append(" ")
             append(unit)
@@ -56,7 +56,7 @@ fun BoxScope.bottleText(
 @Preview
 @Composable
 private fun BottleTextPreview() {
-    Box{
+    Box {
         bottleText(
             waterPercentage = 0.3F,
             bottleColor = Color.Red,
