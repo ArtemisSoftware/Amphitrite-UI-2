@@ -53,7 +53,7 @@ fun WaterBottleScreen() {
         )
         Button(
             onClick = {
-                when{
+                when {
                     usedWaterAmount + 200 >= totalWaterAmount -> usedWaterAmount = totalWaterAmount
                     usedWaterAmount < totalWaterAmount -> usedWaterAmount += 200
                     else -> usedWaterAmount = totalWaterAmount

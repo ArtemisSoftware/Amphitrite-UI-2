@@ -76,4 +76,6 @@ dependencies {
     implementation "com.google.accompanist:accompanist-pager-indicators:0.28.0" // Pager Indicators
 
     implementation("com.github.skydoves:orbital:0.3.2")
+
+    implementation "androidx.compose.material:material-icons-extended:$compose_ui_version"
 }
