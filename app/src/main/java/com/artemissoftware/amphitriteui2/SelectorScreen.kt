@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -36,129 +37,142 @@ import com.artemissoftware.amphitriteui2.epoch.EpochViewModel
 import com.artemissoftware.amphitriteui2.islands.Island
 import com.artemissoftware.amphitriteui2.multiplescreens.MultipleSreensScreen
 import com.artemissoftware.amphitriteui2.multiplescreens.WindowSize
+import com.artemissoftware.amphitriteui2.stopwatch.StopWatchScreen
+import com.artemissoftware.amphitriteui2.stopwatch.StopWatchViewModel
 import com.artemissoftware.amphitriteui2.tabs.TabScreen
 import com.artemissoftware.amphitriteui2.verticalslider.VerticalSlider
 
 @Composable
 fun SelectorScreen(navController: NavHostController) {
-    LazyColumn(
-        modifier = Modifier.fillMaxHeight(),
-        // verticalArrangement = Arrangement.spacedBy(24.dp)
-    ) {
-        item {
-            Demo(
-                title = "Islands",
-                navController,
-                Destinations.Islands,
-            )
-        }
-        item {
-            Demo(
-                title = "Credit cards\n(rotation animation)",
-                navController,
-                Destinations.CreditCards,
-            )
-        }
-        item {
-            Demo(
-                title = "Multiple screens",
-                navController,
-                Destinations.MultipleScreens,
-            )
-        }
-        item {
-            Demo(
-                title = "Categories Table",
-                navController,
-                Destinations.CategoriesTable,
-            )
-        }
-        item {
-            Demo(
-                title = "Circular slider",
-                navController,
-                Destinations.CircularSlider,
-            )
-        }
-        item {
-            Demo(
-                title = "Tabs",
-                navController,
-                Destinations.Tabs,
-            )
-        }
-        item {
-            Demo(
-                title = "Epoch",
-                navController,
-                Destinations.Epoch,
-            )
-        }
-        item {
-            Demo(
-                title = "DraggableBox",
-                navController,
-                Destinations.DraggableBox,
-            )
-        }
-        item {
-            Demo(
-                title = "Vertical Slider",
-                navController,
-                Destinations.VerticalSlider,
-            )
-        }
-        item {
-            Demo(
-                title = "Drag and Drop",
-                navController,
-                Destinations.DragDrop,
-            )
-        }
-        item {
-            Demo(
-                title = "Glow",
-                navController,
-                Destinations.Glow,
-            )
-        }
-        item {
-            Demo(
-                title = "Image Transition with Animation",
-                navController,
-                Destinations.ImageTransition,
-            )
-        }
-        item {
-            Demo(
-                title = "Shared Element Transition Animation",
-                navController,
-                Destinations.SharedElementTransitionAnimation,
-            )
-        }
-        item {
-            Demo(
-                title = "Shared Element Transition with list Animation",
-                navController,
-                Destinations.SharedElementTransitionWithListAnimation,
-            )
-        }
-        item {
-            Demo(
-                title = "Animated content",
-                navController,
-                Destinations.AnimatedContent,
-            )
-        }
 
-        item {
+    LazyColumn {
+        items(demos) { demo ->
             Demo(
-                title = "Water Bottle",
+                title = demo.title,
                 navController,
-                Destinations.WaterBottle,
+                demo.destination,
             )
         }
     }
+
+//    LazyColumn(
+//        modifier = Modifier.fillMaxHeight(),
+//        // verticalArrangement = Arrangement.spacedBy(24.dp)
+//    ) {
+//        item {
+//            Demo(
+//                title = "Islands",
+//                navController,
+//                Destinations.Islands,
+//            )
+//        }
+//        item {
+//            Demo(
+//                title = "Credit cards\n(rotation animation)",
+//                navController,
+//                Destinations.CreditCards,
+//            )
+//        }
+//        item {
+//            Demo(
+//                title = "Multiple screens",
+//                navController,
+//                Destinations.MultipleScreens,
+//            )
+//        }
+//        item {
+//            Demo(
+//                title = "Categories Table",
+//                navController,
+//                Destinations.CategoriesTable,
+//            )
+//        }
+//        item {
+//            Demo(
+//                title = "Circular slider",
+//                navController,
+//                Destinations.CircularSlider,
+//            )
+//        }
+//        item {
+//            Demo(
+//                title = "Tabs",
+//                navController,
+//                Destinations.Tabs,
+//            )
+//        }
+//        item {
+//            Demo(
+//                title = "Epoch",
+//                navController,
+//                Destinations.Epoch,
+//            )
+//        }
+//        item {
+//            Demo(
+//                title = "DraggableBox",
+//                navController,
+//                Destinations.DraggableBox,
+//            )
+//        }
+//        item {
+//            Demo(
+//                title = "Vertical Slider",
+//                navController,
+//                Destinations.VerticalSlider,
+//            )
+//        }
+//        item {
+//            Demo(
+//                title = "Drag and Drop",
+//                navController,
+//                Destinations.DragDrop,
+//            )
+//        }
+//        item {
+//            Demo(
+//                title = "Glow",
+//                navController,
+//                Destinations.Glow,
+//            )
+//        }
+//        item {
+//            Demo(
+//                title = "Image Transition with Animation",
+//                navController,
+//                Destinations.ImageTransition,
+//            )
+//        }
+//        item {
+//            Demo(
+//                title = "Shared Element Transition Animation",
+//                navController,
+//                Destinations.SharedElementTransitionAnimation,
+//            )
+//        }
+//        item {
+//            Demo(
+//                title = "Shared Element Transition with list Animation",
+//                navController,
+//                Destinations.SharedElementTransitionWithListAnimation,
+//            )
+//        }
+//        item {
+//            Demo(
+//                title = "Animated content",
+//                navController,
+//                Destinations.AnimatedContent,
+//            )
+//        }
+//
+//        item {
+//            Demo(
+//                title = "Water Bottle",
+//                navController,
+//                Destinations.WaterBottle,
+//            )
+//        }
+//    }
 }
 
 sealed class Destinations(val route: String) {
@@ -180,13 +194,20 @@ sealed class Destinations(val route: String) {
     data object AnimatedContent : Destinations("animated_content")
 
     data object WaterBottle : Destinations("water_bottle")
+    data object StopWatch : Destinations("stop_watch")
 }
+
+private val demos = listOf(
+    DemoData(title = "Islands", destination = Destinations.Islands),
+    DemoData(title = "Stop watch", destination = Destinations.StopWatch)
+)
 
 @Composable
 fun SetupNavGraph(
     navController: NavHostController,
     window: WindowSize,
     dragDropViewModel: DragDropViewModel,
+    stopWatchViewModel: StopWatchViewModel
 ) {
     NavHost(
         navController = navController,
@@ -233,7 +254,7 @@ fun SetupNavGraph(
         }
         composable(route = Destinations.VerticalSlider.route) {
             SingleContent {
-                var value by remember { mutableStateOf(0f) }
+                var value by remember { mutableFloatStateOf(0f) }
                 VerticalSlider(
                     value = value,
                     onValueChange = {
@@ -269,6 +290,9 @@ fun SetupNavGraph(
         composable(route = Destinations.WaterBottle.route) {
             WaterBottleScreen()
         }
+        composable(route = Destinations.StopWatch.route) {
+            StopWatchScreen(viewModel = stopWatchViewModel)
+        }
     }
 }
 
@@ -300,3 +324,8 @@ fun Demo(
         Divider(startIndent = 16.dp, thickness = 1.dp, color = Color.LightGray, modifier = Modifier.padding(top = 12.dp))
     }
 }
+
+private data class DemoData(
+    val title: String,
+    val destination: Destinations,
+)
