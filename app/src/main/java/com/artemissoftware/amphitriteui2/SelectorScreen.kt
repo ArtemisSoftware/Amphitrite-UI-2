@@ -23,6 +23,7 @@ import com.artemissoftware.amphitriteui2.animations.glow.Glow
 import com.artemissoftware.amphitriteui2.animations.imagetransition.ImageTransitionScreen
 import com.artemissoftware.amphitriteui2.animations.sharedelementtransition.MountainListScreen
 import com.artemissoftware.amphitriteui2.animations.sharedelementtransition.MountainScreen
+import com.artemissoftware.amphitriteui2.animations.waterbottle.WaterBottleScreen
 import com.artemissoftware.amphitriteui2.categoriestable.TableCategoriesScreen
 import com.artemissoftware.amphitriteui2.categoriestable.models.Categories
 import com.artemissoftware.amphitriteui2.circularslider.CircularSlider
@@ -149,31 +150,36 @@ fun SelectorScreen(navController: NavHostController) {
                 Destinations.AnimatedContent,
             )
         }
+
+        item {
+            Demo(
+                title = "Water Bottle",
+                navController,
+                Destinations.WaterBottle,
+            )
+        }
     }
 }
 
 sealed class Destinations(val route: String) {
-    object Home : Destinations("home_screen")
-    object Islands : Destinations("islands_screen")
-    object CreditCards : Destinations("credit_cards_screen")
-    object MultipleScreens : Destinations("multiple_screens_screen")
-    object CategoriesTable : Destinations("categories_table_screen")
-    object CircularSlider : Destinations("circular_slider_screen")
-    object Tabs : Destinations("tabs_screen")
-    object Epoch : Destinations("epoch_screen")
-    object DraggableBox : Destinations("draggable_box_screen")
-    object VerticalSlider : Destinations("vertical_slider_screen")
-
-    object DragDrop : Destinations("drag_drop_screen")
-
-    object Glow : Destinations("glow_screen")
-    object ImageTransition : Destinations("image_transition_screen")
-
-    object SharedElementTransitionAnimation : Destinations("shared_element_transition_animation")
-
-    object SharedElementTransitionWithListAnimation : Destinations("shared_element_transition_list_animation")
-
+    data object Home : Destinations("home_screen")
+    data object Islands : Destinations("islands_screen")
+    data object CreditCards : Destinations("credit_cards_screen")
+    data object MultipleScreens : Destinations("multiple_screens_screen")
+    data object CategoriesTable : Destinations("categories_table_screen")
+    data object CircularSlider : Destinations("circular_slider_screen")
+    data object Tabs : Destinations("tabs_screen")
+    data object Epoch : Destinations("epoch_screen")
+    data object DraggableBox : Destinations("draggable_box_screen")
+    data object VerticalSlider : Destinations("vertical_slider_screen")
+    data object DragDrop : Destinations("drag_drop_screen")
+    data object Glow : Destinations("glow_screen")
+    data object ImageTransition : Destinations("image_transition_screen")
+    data object SharedElementTransitionAnimation : Destinations("shared_element_transition_animation")
+    data object SharedElementTransitionWithListAnimation : Destinations("shared_element_transition_list_animation")
     data object AnimatedContent : Destinations("animated_content")
+
+    data object WaterBottle : Destinations("water_bottle")
 }
 
 @Composable
@@ -259,6 +265,9 @@ fun SetupNavGraph(
         }
         composable(route = Destinations.AnimatedContent.route) {
             AnimatedContentScreen()
+        }
+        composable(route = Destinations.WaterBottle.route) {
+            WaterBottleScreen()
         }
     }
 }

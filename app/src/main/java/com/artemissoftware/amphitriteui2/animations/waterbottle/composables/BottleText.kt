@@ -1,4 +1,4 @@
-package com.artemissoftware.amphitriteui2.animations.waterbottle
+package com.artemissoftware.amphitriteui2.animations.waterbottle.composables
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
