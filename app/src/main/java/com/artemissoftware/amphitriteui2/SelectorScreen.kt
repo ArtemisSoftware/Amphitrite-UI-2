@@ -44,7 +44,6 @@ import com.artemissoftware.amphitriteui2.verticalslider.VerticalSlider
 
 @Composable
 fun SelectorScreen(navController: NavHostController) {
-
     LazyColumn {
         items(demos) { demo ->
             Demo(
@@ -59,34 +58,7 @@ fun SelectorScreen(navController: NavHostController) {
 //        modifier = Modifier.fillMaxHeight(),
 //        // verticalArrangement = Arrangement.spacedBy(24.dp)
 //    ) {
-//        item {
-//            Demo(
-//                title = "Islands",
-//                navController,
-//                Destinations.Islands,
-//            )
-//        }
-//        item {
-//            Demo(
-//                title = "Credit cards\n(rotation animation)",
-//                navController,
-//                Destinations.CreditCards,
-//            )
-//        }
-//        item {
-//            Demo(
-//                title = "Multiple screens",
-//                navController,
-//                Destinations.MultipleScreens,
-//            )
-//        }
-//        item {
-//            Demo(
-//                title = "Categories Table",
-//                navController,
-//                Destinations.CategoriesTable,
-//            )
-//        }
+
 //        item {
 //            Demo(
 //                title = "Circular slider",
@@ -143,35 +115,6 @@ fun SelectorScreen(navController: NavHostController) {
 //                Destinations.ImageTransition,
 //            )
 //        }
-//        item {
-//            Demo(
-//                title = "Shared Element Transition Animation",
-//                navController,
-//                Destinations.SharedElementTransitionAnimation,
-//            )
-//        }
-//        item {
-//            Demo(
-//                title = "Shared Element Transition with list Animation",
-//                navController,
-//                Destinations.SharedElementTransitionWithListAnimation,
-//            )
-//        }
-//        item {
-//            Demo(
-//                title = "Animated content",
-//                navController,
-//                Destinations.AnimatedContent,
-//            )
-//        }
-//
-//        item {
-//            Demo(
-//                title = "Water Bottle",
-//                navController,
-//                Destinations.WaterBottle,
-//            )
-//        }
 //    }
 }
 
@@ -199,7 +142,14 @@ sealed class Destinations(val route: String) {
 
 private val demos = listOf(
     DemoData(title = "Islands", destination = Destinations.Islands),
-    DemoData(title = "Stop watch", destination = Destinations.StopWatch)
+    DemoData(title = "Credit cards\n(rotation animation)", destination = Destinations.CreditCards),
+    DemoData(title = "Multiple screens", destination = Destinations.MultipleScreens),
+    DemoData(title = "Categories Table", destination = Destinations.CategoriesTable),
+    DemoData(title = "Animated content", destination = Destinations.AnimatedContent),
+    DemoData(title = "Water Bottle", destination = Destinations.WaterBottle),
+    DemoData(title = "Shared Element Transition Animation", destination = Destinations.SharedElementTransitionAnimation),
+    DemoData(title = "Shared Element Transition with list Animation", destination = Destinations.SharedElementTransitionWithListAnimation),
+    DemoData(title = "Stop watch", destination = Destinations.StopWatch),
 )
 
 @Composable
@@ -207,7 +157,7 @@ fun SetupNavGraph(
     navController: NavHostController,
     window: WindowSize,
     dragDropViewModel: DragDropViewModel,
-    stopWatchViewModel: StopWatchViewModel
+    stopWatchViewModel: StopWatchViewModel,
 ) {
     NavHost(
         navController = navController,
