@@ -3,12 +3,22 @@ package com.artemissoftware.amphitriteui2
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Divider
-import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -20,6 +30,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.artemissoftware.amphitriteui2.animations.animatedcontent.AnimatedContentScreen
+import com.artemissoftware.amphitriteui2.animations.draggablecircularslider.CircularProgressIndicator
 import com.artemissoftware.amphitriteui2.animations.glow.Glow
 import com.artemissoftware.amphitriteui2.animations.imagetransition.ImageTransitionScreen
 import com.artemissoftware.amphitriteui2.animations.sharedelementtransition.MountainListScreen
@@ -40,6 +51,8 @@ import com.artemissoftware.amphitriteui2.multiplescreens.WindowSize
 import com.artemissoftware.amphitriteui2.stopwatch.StopWatchScreen
 import com.artemissoftware.amphitriteui2.stopwatch.StopWatchViewModel
 import com.artemissoftware.amphitriteui2.tabs.TabScreen
+import com.artemissoftware.amphitriteui2.ui.theme.gray
+import com.artemissoftware.amphitriteui2.ui.theme.orange
 import com.artemissoftware.amphitriteui2.verticalslider.VerticalSlider
 
 @Composable
@@ -61,25 +74,12 @@ fun SelectorScreen(navController: NavHostController) {
 
 //        item {
 //            Demo(
-//                title = "Circular slider",
-//                navController,
-//                Destinations.CircularSlider,
-//            )
-//        }
-//        item {
-//            Demo(
 //                title = "Tabs",
 //                navController,
 //                Destinations.Tabs,
 //            )
 //        }
-//        item {
-//            Demo(
-//                title = "Epoch",
-//                navController,
-//                Destinations.Epoch,
-//            )
-//        }
+
 //        item {
 //            Demo(
 //                title = "DraggableBox",
@@ -108,13 +108,6 @@ fun SelectorScreen(navController: NavHostController) {
 //                Destinations.Glow,
 //            )
 //        }
-//        item {
-//            Demo(
-//                title = "Image Transition with Animation",
-//                navController,
-//                Destinations.ImageTransition,
-//            )
-//        }
 //    }
 }
 
@@ -138,6 +131,7 @@ sealed class Destinations(val route: String) {
 
     data object WaterBottle : Destinations("water_bottle")
     data object StopWatch : Destinations("stop_watch")
+    data object DraggableCircularProgressSlider : Destinations("draggable_circular_progress_slider")
 }
 
 private val demos = listOf(
@@ -147,9 +141,13 @@ private val demos = listOf(
     DemoData(title = "Categories Table", destination = Destinations.CategoriesTable),
     DemoData(title = "Animated content", destination = Destinations.AnimatedContent),
     DemoData(title = "Water Bottle", destination = Destinations.WaterBottle),
+    DemoData(title = "Image Transition with Animation", destination = Destinations.ImageTransition),
     DemoData(title = "Shared Element Transition Animation", destination = Destinations.SharedElementTransitionAnimation),
     DemoData(title = "Shared Element Transition with list Animation", destination = Destinations.SharedElementTransitionWithListAnimation),
     DemoData(title = "Stop watch", destination = Destinations.StopWatch),
+    DemoData(title = "Epoch", destination = Destinations.Epoch),
+    DemoData(title = "Circular slider", destination = Destinations.CircularSlider),
+    DemoData(title = "Draggable Circular Progress Slider", destination = Destinations.DraggableCircularProgressSlider),
 )
 
 @Composable
@@ -243,6 +241,21 @@ fun SetupNavGraph(
         composable(route = Destinations.StopWatch.route) {
             StopWatchScreen(viewModel = stopWatchViewModel)
         }
+        composable(route = Destinations.DraggableCircularProgressSlider.route) {
+            SingleContent {
+                CircularProgressIndicator(
+                    modifier = Modifier
+                        .size(360.dp),
+                    initialValue = 0,
+                    primaryColor = orange,
+                    secondaryColor = gray,
+                    circleRadius = 600f,
+                    onPositionChange = { position ->
+                        // do something with this position value
+                    },
+                )
+            }
+        }
     }
 }
 
@@ -271,7 +284,11 @@ fun Demo(
 
         )
 
-        Divider(startIndent = 16.dp, thickness = 1.dp, color = Color.LightGray, modifier = Modifier.padding(top = 12.dp))
+        HorizontalDivider(
+            modifier = Modifier.padding(top = 12.dp),
+            thickness = 1.dp,
+            color = Color.LightGray,
+        )
     }
 }
 
