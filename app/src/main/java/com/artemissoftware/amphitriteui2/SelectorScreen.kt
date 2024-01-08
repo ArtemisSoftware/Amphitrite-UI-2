@@ -33,6 +33,7 @@ import com.artemissoftware.amphitriteui2.animations.animatedcontent.AnimatedCont
 import com.artemissoftware.amphitriteui2.animations.draggablecircularslider.CircularProgressIndicator
 import com.artemissoftware.amphitriteui2.animations.glow.Glow
 import com.artemissoftware.amphitriteui2.animations.imagetransition.ImageTransitionScreen
+import com.artemissoftware.amphitriteui2.animations.series.AnimationSeriesScreen
 import com.artemissoftware.amphitriteui2.animations.sharedelementtransition.MountainListScreen
 import com.artemissoftware.amphitriteui2.animations.sharedelementtransition.MountainScreen
 import com.artemissoftware.amphitriteui2.animations.waterbottle.WaterBottleScreen
@@ -132,6 +133,7 @@ sealed class Destinations(val route: String) {
     data object WaterBottle : Destinations("water_bottle")
     data object StopWatch : Destinations("stop_watch")
     data object DraggableCircularProgressSlider : Destinations("draggable_circular_progress_slider")
+    data object AnimationSeries : Destinations("animation_series")
 }
 
 private val demos = listOf(
@@ -140,6 +142,7 @@ private val demos = listOf(
     DemoData(title = "Multiple screens", destination = Destinations.MultipleScreens),
     DemoData(title = "Categories Table", destination = Destinations.CategoriesTable),
     DemoData(title = "Animated content", destination = Destinations.AnimatedContent),
+    DemoData(title = "Animation Series", destination = Destinations.AnimationSeries),
     DemoData(title = "Water Bottle", destination = Destinations.WaterBottle),
     DemoData(title = "Image Transition with Animation", destination = Destinations.ImageTransition),
     DemoData(title = "Shared Element Transition Animation", destination = Destinations.SharedElementTransitionAnimation),
@@ -255,6 +258,9 @@ fun SetupNavGraph(
                     },
                 )
             }
+        }
+        composable(route = Destinations.AnimationSeries.route) {
+            AnimationSeriesScreen()
         }
     }
 }
