@@ -11,9 +11,14 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.artemissoftware.amphitriteui2.dragdrop.DragDropViewModel
 import com.artemissoftware.amphitriteui2.multiplescreens.rememberWindowSize
@@ -30,7 +35,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         installSplashScreen().apply {
             setKeepOnScreenCondition {
-                !mainViewModel.isReady.value
+                !mainViewModel.state.value.isReady
             }
             setOnExitAnimationListener { screen ->
                 val zoomX = ObjectAnimator.ofFloat(
@@ -58,7 +63,31 @@ class MainActivity : ComponentActivity() {
             }
         }
         setContent {
-            AmphitriteUI2Theme {
+            val state = mainViewModel.state.collectAsState().value
+            val navController = rememberNavController()
+
+            DisposableEffect(navController) {
+                val observer = LifecycleEventObserver { _, event ->
+                    if (event == Lifecycle.Event.ON_CREATE) {
+                        val listener = NavController.OnDestinationChangedListener { _, destination, _ ->
+                            mainViewModel.onTriggerEvent(MainEvent.ThemeChange(route = destination.route))
+                        }
+                        navController.addOnDestinationChangedListener(listener)
+
+                        onDispose {
+                            navController.removeOnDestinationChangedListener(listener)
+                        }
+                    }
+                }
+
+                lifecycle.addObserver(observer)
+
+                onDispose {
+                    lifecycle.removeObserver(observer)
+                }
+            }
+
+            AmphitriteUI2Theme(themeType = state.theme) {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -66,7 +95,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     val window = rememberWindowSize()
                     SetupNavGraph(
-                        navController = rememberNavController(),
+                        navController = navController,
                         window = window,
                         dragDropViewModel = dragDropViewModel,
                         stopWatchViewModel = stopWatchViewModel,

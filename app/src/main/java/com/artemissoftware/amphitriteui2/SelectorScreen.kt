@@ -49,6 +49,7 @@ import com.artemissoftware.amphitriteui2.epoch.EpochViewModel
 import com.artemissoftware.amphitriteui2.islands.Island
 import com.artemissoftware.amphitriteui2.multiplescreens.MultipleSreensScreen
 import com.artemissoftware.amphitriteui2.multiplescreens.WindowSize
+import com.artemissoftware.amphitriteui2.multipletheme.multipleThemeNavGraph
 import com.artemissoftware.amphitriteui2.stopwatch.StopWatchScreen
 import com.artemissoftware.amphitriteui2.stopwatch.StopWatchViewModel
 import com.artemissoftware.amphitriteui2.tabs.TabScreen
@@ -134,6 +135,12 @@ sealed class Destinations(val route: String) {
     data object StopWatch : Destinations("stop_watch")
     data object DraggableCircularProgressSlider : Destinations("draggable_circular_progress_slider")
     data object AnimationSeries : Destinations("animation_series")
+
+    data object MultipleThemes : Destinations(Graphs.MultipleThemeNavGraph.name)
+}
+
+sealed class Graphs(val name: String) {
+    data object MultipleThemeNavGraph : Graphs("MultipleThemeNavGraph")
 }
 
 private val demos = listOf(
@@ -151,6 +158,7 @@ private val demos = listOf(
     DemoData(title = "Epoch", destination = Destinations.Epoch),
     DemoData(title = "Circular slider", destination = Destinations.CircularSlider),
     DemoData(title = "Draggable Circular Progress Slider", destination = Destinations.DraggableCircularProgressSlider),
+    DemoData(title = "Multiple themes", destination = Destinations.MultipleThemes),
 )
 
 @Composable
@@ -262,6 +270,8 @@ fun SetupNavGraph(
         composable(route = Destinations.AnimationSeries.route) {
             AnimationSeriesScreen()
         }
+
+        multipleThemeNavGraph(navController = navController)
     }
 }
 
