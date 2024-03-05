@@ -7,7 +7,6 @@ import android.view.animation.OvershootInterpolator
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -24,7 +23,9 @@ import com.artemissoftware.amphitriteui2.dragdrop.DragDropViewModel
 import com.artemissoftware.amphitriteui2.multiplescreens.rememberWindowSize
 import com.artemissoftware.amphitriteui2.stopwatch.StopWatchViewModel
 import com.artemissoftware.amphitriteui2.ui.theme.AmphitriteUI2Theme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private val dragDropViewModel = DragDropViewModel()
