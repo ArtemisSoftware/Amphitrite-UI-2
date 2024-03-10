@@ -12,18 +12,9 @@ class CardIoContract : ActivityResultContract<String, String?>() {
 
     override fun createIntent(context: Context, input: String): Intent {
         val scanIntent = Intent(context, CardIOActivity::class.java)
-
-        // customize these values to suit your needs.
         scanIntent.putExtra(CardIOActivity.EXTRA_REQUIRE_EXPIRY, true) // default: false
         scanIntent.putExtra(CardIOActivity.EXTRA_REQUIRE_CVV, false) // default: false
         scanIntent.putExtra(CardIOActivity.EXTRA_REQUIRE_POSTAL_CODE, false) // default: false
-        // MY_SCAN_REQUEST_CODE is arbitrary and is only used within this activity.
-        // startActivityForResult(scanIntent, MY_SCAN_REQUEST_CODE)
-
-        // ----
-
-//        val intent = Intent(context, DummyResultActivity::class.java)
-//        intent.putExtra(INPUT_DATA, input)
         return scanIntent
     }
 
