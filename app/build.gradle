@@ -88,4 +88,14 @@ dependencies {
     implementation "com.google.dagger:hilt-android:2.44"
     kapt "com.google.dagger:hilt-compiler:2.44"
     implementation "androidx.hilt:hilt-navigation-compose:1.2.0"
+
+    implementation "io.card:android-sdk:5.5.1"
+
+    implementation 'com.getbouncer:cardscan-ui:2.1.0004'
+    implementation "com.getbouncer:scan-payment-full:2.1.0004"
+    // If you're already using tensorflow lite elsewhere in your project, make
+    // sure you depend on the TFLite framework.
+    implementation 'org.tensorflow:tensorflow-lite:2.4.0'
+
+
 }
