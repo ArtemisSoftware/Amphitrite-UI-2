@@ -3,4 +3,5 @@
     <string name="bouncer_card_scan_instructions">Mete o cartão na caixa</string>
     <string name="bouncer_card_scan_security">Está seguro</string>
     <string name="bouncer_enter_card_manually"></string>
+    <string name="bouncer_processing_card">A processar...</string>
 </resources>

@@ -39,6 +39,7 @@ import com.artemissoftware.amphitriteui2.animations.sharedelementtransition.Moun
 import com.artemissoftware.amphitriteui2.animations.waterbottle.WaterBottleScreen
 import com.artemissoftware.amphitriteui2.bottomsheet.BottomSheetScreen
 import com.artemissoftware.amphitriteui2.bottomsheet.ModalScreen
+import com.artemissoftware.amphitriteui2.cardscanner.CardScannerScreen
 import com.artemissoftware.amphitriteui2.categoriestable.TableCategoriesScreen
 import com.artemissoftware.amphitriteui2.categoriestable.models.Categories
 import com.artemissoftware.amphitriteui2.circularslider.CircularSlider
@@ -141,6 +142,7 @@ sealed class Destinations(val route: String) {
     data object MultipleThemes : Destinations(Graphs.MultipleThemeNavGraph.name)
     data object Modal : Destinations("modal")
     data object BottomSheet : Destinations("bottom_sheet")
+    data object CardScan : Destinations("card_scan")
 }
 
 sealed class Graphs(val name: String) {
@@ -165,6 +167,7 @@ private val demos = listOf(
     DemoData(title = "Multiple themes", destination = Destinations.MultipleThemes),
     DemoData(title = "Modal", destination = Destinations.Modal),
     DemoData(title = "Bottom Sheet", destination = Destinations.BottomSheet),
+    DemoData(title = "Card Scan Sheet", destination = Destinations.CardScan),
 )
 
 @Composable
@@ -285,6 +288,10 @@ fun SetupNavGraph(
 
         composable(route = Destinations.BottomSheet.route) {
             BottomSheetScreen()
+        }
+
+        composable(route = Destinations.CardScan.route) {
+            CardScannerScreen()
         }
     }
 }

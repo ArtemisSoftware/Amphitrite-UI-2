@@ -32,7 +32,6 @@ import io.card.payment.CardIOActivity
 
 val API_KEY = "qOJ_fF-WLDMbG05iBq5wvwiTNTmM2qIn"
 
-// val API_KEY = "51Or2cBG9KqZNCuLw4tGxLixAo2b7X3neTKKlCAdbBSNmHH6uiHjLbiOCrDSi3a0wzjfUgoRZgSMSaB6XGcAjnK0G00SkXGh3PS"
 @AndroidEntryPoint
 class MainActivity : ComponentActivity(), CardScanActivityResultHandler {
 
